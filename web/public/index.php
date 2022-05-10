@@ -199,7 +199,7 @@
     ?>
 
     <?php
-    echo "<br>";
+    /*echo "<br>";
     echo fix_names("WILLIAM", "henry", "gatES");
 
     function fix_names($n1, $n2, $n3)
@@ -209,6 +209,340 @@
         $n3 = ucfirst(strtolower($n3));
 
         return $n1 . " " . $n2 . " " . $n3;
+    } */
+    ?>
+
+    <?php
+    /* echo "<br>";
+    $names = fix_names("WILLIAM", "henry", "gatES");
+    echo $names[0] . " " . $names[1] . " " . $names[2];
+
+    function fix_names($n1, $n2, $n3)
+    {
+        $n1 = ucfirst(strtolower($n1));
+        $n2 = ucfirst(strtolower($n2));
+        $n3 = ucfirst(strtolower($n3));
+
+        return array($n1, $n2, $n3);
+    } */
+    ?>
+
+    <?php
+    /* echo "<br>";
+    $a1 = "WILLIAM";
+    $a2 = "henry";
+    $a3 = "gatES";
+
+    echo $a1 . " " . $a2 . " " . $a3 . "<br>";
+    fix_names($a1, $a2, $a3);
+    echo $a1 . " " . $a2 . " " . $a3;
+
+    function fix_names(&$n1, &$n2, &$n3)
+    {
+        $n1 = ucfirst(strtolower($n1));
+        $n2 = ucfirst(strtolower($n2));
+        $n3 = ucfirst(strtolower($n3));
+    } */
+    ?>
+
+    <?php
+    echo "<br>";
+    $a1 = "WILLIAM";
+    $a2 = "henry";
+    $a3 = "gatES";
+
+    echo $a1 . " " . $a2 . " " . $a3 . "<br>";
+    fix_names();
+    echo $a1 . " " . $a2 . " " . $a3;
+
+    function fix_names()
+    {
+        global $a1;
+        $a1 = ucfirst(strtolower($a1));
+        global $a2;
+        $a2 = ucfirst(strtolower($a2));
+        global $a3;
+        $a3 = ucfirst(strtolower($a3));
+    }
+    ?>
+
+    <?php
+    /* include "library.php";
+    / мой код */
+    ?>
+
+    <?php
+    /* include_once "library.php";
+    / мой код */
+    ?>
+
+    <?php
+    /* require_once "library.php";
+    / мой код */
+    ?>
+
+    <?php
+    echo "<br>";
+    if (function_exists("array_combine")) {
+        echo "Функция существует";
+    } else {
+        echo "Функция не существует, желательно создать её самостоятельно";
+    }
+    ?>
+
+    <?php
+    /* echo "<br>";
+    $object = new User;
+    print_r($object);
+
+    class User
+    {
+        public $name, $password;
+
+        function save_user()
+        {
+            echo "Сюда помещается код, сохраняющий данные пользователя";
+        }
+    } */
+    ?>
+
+    <?php
+    /* echo "<br>";
+    $object = new User;
+    print_r($object);
+    echo "<br>";
+
+    $object->name = "Joe";
+    $object->password = "mypass";
+    print_r($object);
+    echo "<br>";
+
+    $object->save_user();
+
+    class User
+    {
+        public $name, $password;
+
+        function save_user()
+        {
+            echo "Сюда помещается код, сохраняющий данные пользователя";
+        }
+    } */
+    ?>
+
+    <?php // копирование объекта
+    /* echo "<br>";
+    $object1 = new User();
+    $object1->name = "Alice";
+    $object2 = $object1;
+    $object2->name = "Amy";
+
+    echo "object1 name = " . $object1->name . "<br>";
+    echo "object2 name = " . $object2->name;
+
+    class User
+    {
+        public $name;
+    } */
+    ?>
+
+    <?php //  клонирование объекта
+    /* echo "<br>";
+    $object1 = new User();
+    $object1->name = "Alice";
+    $object2 = clone $object1;
+    $object2->name = "Amy";
+
+    echo "object1 name = " . $object1->name . "<br>";
+    echo "object2 name = " . $object2->name;
+
+    class User
+    {
+        public $name;
+    } */
+    ?>
+
+    <?php // метод-конструктор
+    /* echo "<br>";
+    class User
+    {
+        public function __construct($param1, $param2)
+        {
+            // Сюда помещаются инструкции конструктора
+            $username = "Guest";
+        }
+    } */
+    ?>
+
+    <?php // метод-деструктор
+    /* echo "<br>";
+    class User
+    {
+        function __destruct()
+        {
+            // Сюда помещается код деструктора
+        }
+    } */
+    ?>
+
+    <?php // переменная $this
+    /* echo "<br>";
+    $object = new User;
+    $object->password = "secret";
+    echo $object->get_password();
+    class User
+    {
+        public $name, $password;
+
+        function get_password()
+        {
+            return $this->password;
+        }
+    } */
+    ?>
+
+    <?php // неявное объявление свойств
+    /* echo "<br>";
+    $object1 = new User();
+    $object1->name = "Alice";
+
+    echo $object1->name;
+
+    class User
+    {
+    } */
+    ?>
+
+    <?php // статический метод
+    /* echo "<br>";
+    User::pwd_string();
+
+    class User
+    {
+        static function pwd_string()
+        {
+            echo "Пожалуйста, введите ваш пароль";
+        }
+    } */
+    ?>
+
+    <?php // статическое свойство
+    echo "<br>";
+    $temp = new Test();
+
+    echo "Тест А: " . Test::$static_property . "<br>";
+    echo "Тест Б: " . $temp->get_sp() . "<br>";
+    echo "Тест В: " . $temp->static_property . "<br>";
+
+    class Test
+    {
+        static $static_property = "Это статическое свойство";
+
+        function get_sp()
+        {
+            return self::$static_property;
+        }
+    }
+    ?>
+
+    <?php // наследование
+    /* echo "<br>";
+    $object = new Subscriber;
+    $object->name = "Fred";
+    $object->password = "pword";
+    $object->phone = "012 345 6789";
+    $object->email = "fred@bloggs.com";
+    $object->display();
+
+    class User
+    {
+        public $name, $password;
+
+        function save_user()
+        {
+            echo "Сюда помещается код, сохраняющий данные пользователя";
+        }
+    }
+
+    class Subscriber extends User
+    {
+        public $phone, $email;
+
+        function display()
+        {
+            echo "Name: " . $this->name . "<br>";
+            echo "Pass: " . $this->password . "<br>";
+            echo "Phone: " . $this->phone . "<br>";
+            echo "Email: " . $this->email;
+        }
+    } */
+    ?>
+
+    <?php // ключевое слово parent
+    echo "<br>";
+    $object = new Son;
+    $object->test();
+    $object->test2();
+
+    class Dad
+    {
+        function test()
+        {
+            echo "[Class Dad] Я твой отец <br>";
+        }
+    }
+
+    class Son extends Dad
+    {
+        function test()
+        {
+            echo "[Class Son] Я Люк <br>";
+        }
+
+        function test2()
+        {
+            parent::test();
+        }
+    }
+    ?>
+
+    <?php // конструктор подкласса
+    echo "<br>";
+    $object = new Tiger();
+    echo "У тигров есть...<br>";
+    echo "Мех: " . $object->fur . "<br>";
+    echo "Полосы: " . $object->stripes;
+
+    class Wildcat
+    {
+        public $fur;
+
+        function __construct()
+        {
+            $this->fur = "TRUE";
+        }
+    }
+
+    class Tiger extends Wildcat
+    {
+        public $stripes;
+
+        function __construct()
+        {
+            parent::__construct(); // первоочередной вызов родительского конструктора
+            $this->stripes = "TRUE";
+        }
+    }
+    ?>
+
+    <?php // метод final
+    echo "<br>";
+    class User
+    {
+        final function copyright()
+        {
+            echo "Этот класс был создан Джо Смитом";
+        }
     }
     ?>
 </body>
