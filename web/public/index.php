@@ -545,6 +545,208 @@
         }
     }
     ?>
+
+    <?php // добавление элементов в массив
+    /* echo "<br>";
+    $paper[] = "Copier"; // в квадратные скобки можно поставить место элемента - 0
+    $paper[] = "Inkjet";
+    $paper[] = "Laser";
+    $paper[] = "Photo";
+
+    print_r($paper); */
+    ?>
+
+    <?php // добавление эл-тов в массив и извлечение их из массива
+    /* echo "<br>";
+    $paper[] = "Copier";
+    $paper[] = "Inkjet";
+    $paper[] = "Laser";
+    $paper[] = "Photo";
+
+    for ($j = 0; $j < 4; ++$j) {
+        echo "$j: $paper[$j]<br>";
+    } */
+    ?>
+
+    <?php // добавление эл-тов к ассоциативному массиву и их извлечение
+    echo "<br>";
+    $paper['copier'] = "Copier & Multipurpose";
+    $paper['inkjet'] = "Inkjet Printer";
+    $paper['laser'] = "Laser Printer";
+    $paper['photo'] = "Photographic Paper";
+
+    echo $paper['laser'];
+    ?>
+
+    <?php // ключевое слово array
+    echo "<br>";
+    $p1 = array("Copier", "Inkjet", "Laser", "Photo");
+
+    echo "Элементв массива p1: " . $p1[2] . "<br>";
+
+    $p2 = array(
+        'copier' => "Copier & Multipurpose",
+        'inkjet' => "Inkjet Printer",
+        'laser' => "Laser Printer",
+        'phonot' => "Photographic Paper"
+    );
+
+    echo "Элемент массива p2: " . $p2['inkjet'] . "<br>";
+    ?>
+
+    <?php // перебор эл-тов числового массива с помощью цикла foreach...as
+    echo "<br>";
+    $paper = array("Copier", "Inkjet", "Laser", "Photo");
+    $j = 0;
+
+    foreach ($paper as $item) {
+        echo "$j: $item <br>";
+        ++$j;
+    }
+    ?>
+
+    <?php // перебор эл-тов ассоциативного массива с помощью цикла foreach...as
+    echo "<br>";
+    $paper = array(
+        'copier' => "Copier & Multipurpose",
+        'inkjet' => "Inkjet Printer",
+        'laser' => "Laser Printer",
+        'photo' => "Photographic Paper"
+    );
+
+    foreach ($paper as $item => $description) {
+        echo "$item: $description <br>";
+    }
+    ?>
+
+    <?php // многомерный ассоциативный массив
+    echo "<br>";
+    $products = array(
+
+        'paper' => array(
+
+            'copier' => "Copier & Multipurpose",
+            'inkjet' => "Inkjet Printer",
+            'laser' => "Laser Printer",
+            'photo' => "Photographic Paper"
+        ),
+
+        'pens' => array(
+
+            'ball' => "Ball Point",
+            'hilite' => "Highlighters",
+            'marker' => "Markers"
+        ),
+
+        'misc' => array(
+
+            'tape' => "Sticky Tape",
+            'glue' => "Adhesives",
+            'clips' => "Paperclips"
+        )
+    );
+
+    echo "<pre>";
+
+    foreach ($products as $section => $items)
+        foreach ($items as $key => $value)
+            echo "$section:\t$key\t($value)<br>";
+
+    echo "</pre>";
+
+    echo $products['pens']['hilite']; // доступ к конкретному эл-ту массива
+    ?>
+
+    <?php // многомерный числовой массив
+    echo "<br>";
+    $chessboard = array(
+        array('r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'),
+        array('p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'),
+        array(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '),
+        array(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '),
+        array(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '),
+        array(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '),
+        array('P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'),
+        array('R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R')
+    );
+
+    echo "<pre>";
+
+    foreach ($chessboard as $row) {
+        foreach ($row as $piece)
+            echo "$piece ";
+
+        echo "<br>";
+    }
+
+    echo "</pre>";
+
+    echo $chessboard[7][3]; // доступ к конкретному эл-ту массива
+    ?>
+
+    <?php // проверяем, является ли переменная массивом
+    // echo (is_array($fred)) ? "Это массив" : "Это не массив";
+    ?>
+
+    <?php
+    /* echo count($fred); // подсчёт эл-тов на верхнем уровне массива
+    echo count($fred, 1); // подсчёт всех эл-тов в многомерном массиве */
+    ?>
+
+    <?php
+    /* sort($fred, SORT_NUMERIC); // числовая сортировка массива
+    sort($fred, SORT_STRING); // строковая сортировка
+    rsort($fred, SORT_NUMERIC); // отсортировка в обратном порядке
+    rsort($fred, SORT_STRING); // отсортировка в обратном порядке */
+    ?>
+
+    <?php
+    // shuffle($cards); // случайный порядок
+    ?>
+
+    <?php // извлечение слов из строки в массив
+    echo "<br>";
+    $temp = explode(' ', "Это предложение из пяти слов"); //вместо пробелов может быть что угодно, хоть звёздочки
+    print_r($temp);
+    ?>
+
+    <?php // превращаем пары "ключ - значение" из массива в переменные
+    /* extract($_GET);
+    extract($_GET, EXTR_PREFIX_ALL, 'fromget'); // а лучше так */
+    ?>
+
+    <?php // создание массива из переменных и их значений
+    echo "<br>";
+    $fname = "Doctor";
+    $sname = "Who";
+    $planet = "Gallifrey";
+    $system = "Gridlock";
+    $constellation = "Kasterborous";
+
+    $contact = compact('fname', 'sname', 'planet', 'system', 'constellation');
+
+    print_r($contact);
+    ?>
+
+    <?php // compact для отладки программы
+    echo "<br>";
+    $j = 23;
+    $temp = "Hello";
+    $address = "1 Old Street";
+    $age = 61;
+
+    print_r(compact(explode(' ', 'j temp address age')));
+    ?>
+
+    <?php //  функция reset, перемещающая в начало массива и возвращающая значение эл-та, на котором остановился указатель
+    /* reset($fred); //  отбрасывание возвращаемого значения
+    $item = reset($fred); // сохранение первого эл-та массива в переменной item */
+    ?>
+
+    <?php // функция end, перемещающая указатель на последний эл-нт массива и возвращающая значение эл-та
+    /* end($fred);
+    $item = end($fred); */
+    ?>
 </body>
 
 </html>
