@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Docker <?php echo "fsafas" ?></title>
+    <title> Основы PHP </title>
 </head>
 
 <body>
