@@ -1,5 +1,5 @@
 <?php
 $hm = 'mysql';
-$db = 'test';
+$db = 'apelsinchiq';
 $un = 'root';
 $pw = 'root';
