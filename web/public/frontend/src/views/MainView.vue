@@ -1,19 +1,21 @@
 <template>
   <div class="main">
-  <RouteVue :route="routes"/>
+    <div class="routes">
+      <Route v-for="(route, index) in routes" :key="index" :route="route" />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import RouteVue from '../components/Route.vue';
+import Route from "../components/route/Route.vue";
 
 export default {
   name: "MainView",
-  components: {RouteVue},
+  components: { Route },
   data() {
     return {
-      routes: {},
+      routes: [],
     };
   },
   async mounted() {
@@ -25,4 +27,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.routes {
+  width: 830px;
+  margin: 0px auto;
+}
+</style>

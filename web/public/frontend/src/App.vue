@@ -5,4 +5,13 @@
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+* {
+  font-family: "Inter", "Roboto";
+  box-sizing: border-box;
+}
+
+body {
+  background: #e5e5e5;
+}
+</style>
