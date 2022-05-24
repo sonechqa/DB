@@ -27,16 +27,35 @@
           {{ trainCompany }}
         </span>
       </div>
+
+      <div class="seats">
+        <span class="heading"> Места </span>
+
+        <span class="free">
+          {{ freePlaces }}
+        </span>
+
+        <span class="price">
+          от
+          {{ price }}
+          Р
+        </span>
+      </div>
+
+      <Button class="button">
+        <span class="buy">Купить</span>
+      </Button>
     </div>
   </div>
 </template>
 
 <script>
 import PlaceTime from "./PlaceTime.vue";
+import Button from "../ui/Button.vue";
 
 export default {
   name: "Route",
-  components: { PlaceTime },
+  components: { PlaceTime, Button },
 
   props: {
     route: {
@@ -51,6 +70,14 @@ export default {
 
     trainCompany() {
       return this.route.trainCompany;
+    },
+
+    freePlaces() {
+      return this.route.freePlaces;
+    },
+
+    price() {
+      return this.route.price;
     },
   },
 };
@@ -68,18 +95,24 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 95px 40px;
+  padding: 70px 40px;
 
   img {
     max-width: 200px;
+    margin-bottom: 15px;
   }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  border-left: solid 1px #ccd4df;
+  padding: 20px 20px;
 }
 
 .train {
   display: flex;
   align-items: center;
-  padding: 30px 80px 190px 25px;
-  border-left: solid 1px #ccd4df;
   min-width: 265px;
 }
 
@@ -99,5 +132,44 @@ export default {
     transform: translate(0, -50%);
     background-color: #2060ff;
   }
+}
+
+.seats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.heading {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+  color: #232328;
+}
+
+.free {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+  color: #818794;
+}
+
+.price {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+  color: #2060ff;
+}
+
+.button {
+  margin-top: auto;
+}
+
+.buy {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 15px;
+  text-align: center;
+  color: #ffffff;
 }
 </style>

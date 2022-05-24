@@ -54,7 +54,7 @@ span {
 
 .date {
   font-weight: 700;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 15px;
   color: #7a818f;
   margin-bottom: 5px;
@@ -62,7 +62,7 @@ span {
 
 .time {
   font-weight: 500;
-  font-size: 32px;
+  font-size: 35px;
   line-height: 32px;
   color: #1f1f24;
   margin-bottom: 10px;
@@ -70,7 +70,7 @@ span {
 
 .place {
   font-weight: 500;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 15px;
   color: #1f1f24;
 }
