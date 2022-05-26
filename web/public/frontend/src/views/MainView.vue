@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <Parameters @submit="updateTickets" />
     <div class="routes">
       <Route v-for="(route, index) in routes" :key="index" :route="route" />
     </div>
@@ -9,20 +10,32 @@
 <script>
 import axios from "axios";
 import Route from "../components/route/Route.vue";
+import Parameters from "../components/search/Parameters.vue";
 
 export default {
   name: "MainView",
-  components: { Route },
+
+  components: { Route, Parameters },
+
   data() {
     return {
       routes: [],
     };
   },
-  async mounted() {
-    const { data } = await axios.post(
-      "http://localhost:8000/endpoints/getRoutes.php"
-    );
-    this.routes = data;
+
+  methods: {
+    async updateTickets(eventData) {
+      const response = await axios.get(
+        "http://localhost:8000/endpoints/getRoutes.php",
+        {
+          params: {
+            departureDate: eventData.date,
+            passengers: eventData.passengers,
+          },
+        }
+      );
+      this.routes = response.data;
+    },
   },
 };
 </script>

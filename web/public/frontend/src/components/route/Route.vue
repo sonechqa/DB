@@ -89,13 +89,15 @@ export default {
   background: white;
   border-radius: 15px;
   margin-bottom: 20px;
+  align-items: center;
 }
 
 .place {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 70px 40px;
+  padding-right: 40px;
+  padding-left: 40px;
 
   img {
     max-width: 200px;
@@ -108,6 +110,7 @@ export default {
   flex-direction: column;
   border-left: solid 1px #ccd4df;
   padding: 20px 20px;
+  min-height: 200px;
 }
 
 .train {
