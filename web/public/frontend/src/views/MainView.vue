@@ -31,6 +31,8 @@ export default {
           params: {
             departureDate: eventData.date,
             passengers: eventData.passengers,
+            fromCityId: eventData.fromCityId,
+            toCityId: eventData.toCityId,
           },
         }
       );

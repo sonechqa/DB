@@ -1,31 +1,49 @@
 <template>
   <div class="parameters">
+    <CitySelect placeholder="Откуда" @cityChoose="fromCitySave" />
+    <CitySelect placeholder="Куда" @cityChoose="toCitySave" />
     <input type="date" v-model="date" />
     <input
       type="text"
       placeholder="Количество пассажиров"
       v-model="passengers"
     />
-    <button @click="onSumbit">Найти билеты</button>
+    <button @click="onSubmit">Найти билеты</button>
   </div>
 </template>
 
 <script>
+import CitySelect from "./CitySelect.vue";
 export default {
   name: "Parameters",
 
-  components: {},
+  components: { CitySelect },
 
   data() {
     return {
-      date: " ",
+      date: "",
       passengers: 1,
+      fromCityId: "",
+      toCityId: "",
     };
   },
 
   methods: {
-    onSumbit() {
-      this.$emit("submit", { date: this.date, passengers: this.passengers });
+    onSubmit() {
+      this.$emit("submit", {
+        date: this.date,
+        passengers: this.passengers,
+        fromCityId: this.fromCityId,
+        toCityId: this.toCityId,
+      });
+    },
+
+    fromCitySave(fromCityId) {
+      this.fromCityId = fromCityId;
+    },
+
+    toCitySave(toCityId) {
+      this.toCityId = toCityId;
     },
   },
 };

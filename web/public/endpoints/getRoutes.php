@@ -9,6 +9,10 @@ $departureDate = $_GET["departureDate"];
 
 $passengers = $_GET["passengers"];
 
+$fromCityId = $_GET["fromCityId"];
+
+$toCityId = $_GET["toCityId"];
+
 $query = <<<SQL
     SELECT r.*,
     s1.name as 'fromStationName',
@@ -20,7 +24,9 @@ $query = <<<SQL
     inner join Stations s2 on r.arrivalPlace = s2.id
     inner join Trains t on r.trainId = t.id
     WHERE DATE(r.departureTime) = "$departureDate"
-    AND r.freePlaces >= "$passengers";
+    AND r.freePlaces >= "$passengers"
+    AND r.departurePlace = "$fromCityId"
+    AND r.arrivalPlace = "$toCityId";
 SQL;
 
 $result = $conn->query($query);
