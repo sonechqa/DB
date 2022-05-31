@@ -1,13 +1,14 @@
 <template>
-  <div class="citySelect">
-    <input
+  <div class="citySelect" v-click-outside="hideDropdown">
+    <UiInput
       type="text"
       :placeholder="placeholder"
       v-model="citySearch"
       @input="showCities"
+      @click="toggleDropdown"
     />
 
-    <div class="cities">
+    <div class="cities" v-show="toggle">
       <div
         class="city"
         v-for="(city, index) in cities"
@@ -22,11 +23,16 @@
 
 <script>
 import axios from "axios";
+import clickOutside from "v-click-outside";
+import UiInput from "../ui/UiInput.vue";
 
 export default {
   name: "CitySelect",
 
-  components: {},
+  components: { UiInput },
+  directives: {
+    clickOutside: clickOutside.directive,
+  },
 
   props: {
     placeholder: {
@@ -38,6 +44,7 @@ export default {
     return {
       citySearch: "",
       cities: [],
+      toggle: false,
     };
   },
 
@@ -57,10 +64,26 @@ export default {
     cityChoice(city) {
       this.citySearch = city.name;
       this.$emit("cityChoose", city.id);
+      this.hideDropdown();
+    },
+
+    toggleDropdown() {
+      this.toggle = !this.toggle;
+    },
+
+    hideDropdown() {
+      this.toggle = false;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.citySelect {
+  position: relative;
+}
+
+.cities {
+  position: absolute;
+}
 </style>

@@ -42,20 +42,18 @@
         </span>
       </div>
 
-      <Button class="button">
-        <span class="buy">Купить</span>
-      </Button>
+      <UiButton class="button">Купить</UiButton>
     </div>
   </div>
 </template>
 
 <script>
 import PlaceTime from "./PlaceTime.vue";
-import Button from "../ui/Button.vue";
+import UiButton from "../ui/UiButton.vue";
 
 export default {
   name: "Route",
-  components: { PlaceTime, Button },
+  components: { PlaceTime, UiButton },
 
   props: {
     route: {
@@ -166,9 +164,9 @@ export default {
 
 .button {
   margin-top: auto;
-}
-
-.buy {
+  border-radius: 10px;
+  padding: 15px 45px;
+  max-width: 145px;
   font-weight: 500;
   font-size: 16px;
   line-height: 15px;

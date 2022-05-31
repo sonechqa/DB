@@ -1,5 +1,5 @@
 <template>
-  <div class="placeTime" v-bind:class="{ rightAlign: isRight }">
+  <div class="placeTime" :class="{ rightAlign: isRight }">
     <span class="date">
       {{ date }}
     </span>
