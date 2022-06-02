@@ -8,7 +8,7 @@
       @click="toggleDropdown"
     />
 
-    <div class="cities" v-show="toggle">
+    <div class="cities" v-show="toggle && cities.length !== 0">
       <div
         class="city"
         v-for="(city, index) in cities"
@@ -85,5 +85,22 @@ export default {
 
 .cities {
   position: absolute;
+  background-color: #ffffff;
+  width: 100%;
+  padding: 5px 0px;
+  margin-top: 5px;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.city {
+  padding: 10px 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #dee3ec;
+  }
+}
+
+.city + .city {
+  border-top: 1px solid #ccd4df;
 }
 </style>
