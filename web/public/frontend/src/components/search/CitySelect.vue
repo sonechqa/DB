@@ -1,18 +1,18 @@
 <template>
   <div class="citySelect" v-click-outside="hideDropdown">
     <UiInput
+      v-model="citySearch"
       type="text"
       :placeholder="placeholder"
-      v-model="citySearch"
       @input="showCities"
       @click="toggleDropdown"
     />
 
     <div class="cities" v-show="toggle && cities.length !== 0">
       <div
-        class="city"
         v-for="(city, index) in cities"
         :key="index"
+        class="city"
         @click="cityChoice(city)"
       >
         {{ city.name }}

@@ -84,7 +84,7 @@ export default {
 <style lang="scss" scoped>
 .route {
   display: flex;
-  background: white;
+  background: #ffffff;
   border-radius: 15px;
   margin-bottom: 20px;
   align-items: center;
