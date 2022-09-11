@@ -3,11 +3,16 @@
     <div class="params">
       <h1 class="heading">Поиск железнодорожных билетов</h1>
       <h3 class="method">Лёгкий способ купить железнодорожные билеты дёшево</h3>
-      <Parameters @submit="updateTickets" />
+      <Parameters @submit="onSubmit" />
     </div>
 
     <div v-show="routes.length !== 0" class="routes">
-      <Route v-for="(route, index) in routes" :key="index" :route="route" />
+      <Route
+        v-for="(route, index) in routes"
+        :key="index"
+        :route="route"
+        @submit="updateTickets"
+      />
     </div>
 
     <AddRoute v-if="buttonPressed" @routeSent="press" />
@@ -34,19 +39,31 @@ export default {
     return {
       routes: [],
       buttonPressed: false,
+      departureDate: "",
+      passengers: "",
+      fromCityId: "",
+      toCityId: "",
     };
   },
 
   methods: {
-    async updateTickets(eventData) {
+    onSubmit(eventData) {
+      this.departureDate = eventData.date;
+      this.passengers = eventData.passengers;
+      this.fromCityId = eventData.fromCityId;
+      this.toCityId = eventData.toCityId;
+      this.updateTickets();
+    },
+
+    async updateTickets() {
       const response = await axios.get(
         "http://localhost:8000/endpoints/getRoutes.php",
         {
           params: {
-            departureDate: eventData.date,
-            passengers: eventData.passengers,
-            fromCityId: eventData.fromCityId,
-            toCityId: eventData.toCityId,
+            departureDate: this.departureDate,
+            passengers: this.passengers,
+            fromCityId: this.fromCityId,
+            toCityId: this.toCityId,
           },
         }
       );

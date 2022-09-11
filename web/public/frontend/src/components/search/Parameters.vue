@@ -84,7 +84,6 @@ export default {
 }
 </style>
 
-
 <style lang="scss">
 .fromCity input {
   border-radius: 15px 0px 0px 15px !important;

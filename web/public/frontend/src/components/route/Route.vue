@@ -32,7 +32,7 @@
         <span class="heading"> Места </span>
 
         <span class="free">
-          {{ freePlaces }}
+          {{ freeSpaces }}
         </span>
 
         <span class="price">
@@ -42,7 +42,7 @@
         </span>
       </div>
 
-      <UiButton class="button">Купить</UiButton>
+      <UiButton class="button" @click="ticketSold">Купить</UiButton>
     </div>
   </div>
 </template>
@@ -50,6 +50,7 @@
 <script>
 import PlaceTime from "./PlaceTime.vue";
 import UiButton from "../ui/UiButton.vue";
+import axios from "axios";
 
 export default {
   name: "Route",
@@ -70,12 +71,25 @@ export default {
       return this.route.trainCompany;
     },
 
-    freePlaces() {
-      return this.route.freePlaces;
+    freeSpaces() {
+      return this.route.freeSpaces;
     },
 
     price() {
       return this.route.price;
+    },
+  },
+
+  methods: {
+    async ticketSold() {
+      const surname = window.prompt("Введите вашу фамилию", "Фамилия");
+      await axios.get("http://localhost:8000/endpoints/addTicket.php", {
+        params: {
+          id: this.route.id,
+          surname,
+        },
+      });
+      this.$emit("submit");
     },
   },
 };

@@ -37,7 +37,7 @@
       placeholder="Поезд"
     />
     <UiInput
-      v-model="params.freePlaces"
+      v-model="params.freeSpaces"
       class="input"
       type="number"
       placeholder="Свободные места"
