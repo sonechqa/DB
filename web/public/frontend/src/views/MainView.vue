@@ -19,6 +19,9 @@
 
     <div v-else class="button">
       <UiButton class="add" @click="press">Добавить</UiButton>
+      <UiButton class="sold">
+        <router-link to="/sold">Купленные билеты</router-link>
+      </UiButton>
     </div>
   </div>
 </template>
@@ -108,12 +111,22 @@ export default {
 
 .button {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 30px;
 }
 
 .add {
   font-size: 20px;
   line-height: 15px;
+}
+
+.sold {
+  font-size: 20px;
+  line-height: 15px;
+
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
 }
 </style>

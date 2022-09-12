@@ -35,7 +35,7 @@ CREATE TABLE `Routes` (
   `departureTime` datetime NOT NULL,
   `arrivalTime` datetime NOT NULL,
   `trainId` int UNSIGNED DEFAULT NULL,
-  `freePlaces` smallint NOT NULL,
+  `places` smallint NOT NULL,
   `price` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -43,7 +43,7 @@ CREATE TABLE `Routes` (
 -- Дамп данных таблицы `Routes`
 --
 
-INSERT INTO `Routes` (`id`, `number`, `departurePlace`, `arrivalPlace`, `departureTime`, `arrivalTime`, `trainId`, `freePlaces`, `price`) VALUES
+INSERT INTO `Routes` (`id`, `number`, `departurePlace`, `arrivalPlace`, `departureTime`, `arrivalTime`, `trainId`, `places`, `price`) VALUES
 (2, '1', 1, 2, '2022-05-19 13:19:20', '2022-05-20 16:19:20', 1, 140, 2500),
 (3, '2', 2, 5, '2022-05-21 16:20:24', '2022-05-22 16:20:24', 2, 100, 3000),
 (4, '3', 1, 5, '2022-05-19 17:26:49', '2022-05-23 17:26:49', 1, 50, 3000),

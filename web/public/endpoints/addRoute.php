@@ -13,12 +13,12 @@ $arrivalPlace = $entityBody["arrivalPlace"];
 $departureTime = $entityBody["departureTime"];
 $arrivalTime = $entityBody["arrivalTime"];
 $trainNumber = $entityBody["trainNumber"];
-$freePlaces = $entityBody["freePlaces"];
+$places = $entityBody["places"];
 $price = $entityBody["price"];
 
 $query = <<<SQL
-INSERT INTO Routes (`id`, `number`, `departurePlace`, `arrivalPlace`, `departureTime`, `arrivalTime`, `trainId`, `freePlaces`, `price`)
-VALUES (NULL, '$number', '$departurePlace', '$arrivalPlace', '$departureTime', '$arrivalTime', '$trainNumber', '$freePlaces', '$price');
+INSERT INTO Routes (`id`, `number`, `departurePlace`, `arrivalPlace`, `departureTime`, `arrivalTime`, `trainId`, `places`, `price`)
+VALUES (NULL, '$number', '$departurePlace', '$arrivalPlace', '$departureTime', '$arrivalTime', '$trainNumber', '$places', '$price');
 SQL;
 
 

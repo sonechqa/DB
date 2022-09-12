@@ -42,7 +42,11 @@
         </span>
       </div>
 
-      <UiButton class="button" @click="ticketSold">Купить</UiButton>
+      <UiButton class="button" @click="ticketSold" v-if="button">
+        Купить
+      </UiButton>
+
+      <p class="lastName" v-else>{{ surname }}</p>
     </div>
   </div>
 </template>
@@ -59,6 +63,11 @@ export default {
   props: {
     route: {
       type: Object,
+    },
+
+    button: {
+      type: Boolean,
+      default: true,
     },
   },
 
@@ -77,6 +86,10 @@ export default {
 
     price() {
       return this.route.price;
+    },
+
+    surname() {
+      return this.route.surname;
     },
   },
 
@@ -186,5 +199,10 @@ export default {
   line-height: 15px;
   text-align: center;
   color: #ffffff;
+}
+
+.lastName {
+  font-size: 18px;
+  margin-top: 30px;
 }
 </style>
