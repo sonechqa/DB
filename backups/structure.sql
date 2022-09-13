@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: mysql
--- Время создания: Июн 09 2022 г., 09:13
+-- Время создания: Сен 13 2022 г., 16:09
 -- Версия сервера: 8.0.21
 -- Версия PHP: 7.4.20
 
@@ -39,19 +39,6 @@ CREATE TABLE `Routes` (
   `price` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Дамп данных таблицы `Routes`
---
-
-INSERT INTO `Routes` (`id`, `number`, `departurePlace`, `arrivalPlace`, `departureTime`, `arrivalTime`, `trainId`, `places`, `price`) VALUES
-(2, '1', 1, 2, '2022-05-19 13:19:20', '2022-05-20 16:19:20', 1, 140, 2500),
-(3, '2', 2, 5, '2022-05-21 16:20:24', '2022-05-22 16:20:24', 2, 100, 3000),
-(4, '3', 1, 5, '2022-05-19 17:26:49', '2022-05-23 17:26:49', 1, 50, 3000),
-(5, '4', 1, 2, '2022-05-19 14:04:41', '2022-05-21 14:04:41', 2, 150, 1500),
-(6, '5', 5, 1, '2022-06-03 13:03:58', '2022-06-05 14:03:59', 1, 170, 2700),
-(9, '6', 5, 2, '2022-06-10 18:00:00', '2022-06-11 14:00:00', 2, 200, 3000),
-(10, '7', 2, 1, '2022-06-14 10:00:00', '2022-06-15 09:00:00', 1, 180, 2800);
-
 -- --------------------------------------------------------
 
 --
@@ -60,7 +47,8 @@ INSERT INTO `Routes` (`id`, `number`, `departurePlace`, `arrivalPlace`, `departu
 
 CREATE TABLE `SoldTickets` (
   `id` int UNSIGNED NOT NULL,
-  `number` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+  `routeId` int UNSIGNED NOT NULL,
+  `surname` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -73,15 +61,6 @@ CREATE TABLE `Stations` (
   `id` int UNSIGNED NOT NULL,
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `Stations`
---
-
-INSERT INTO `Stations` (`id`, `name`) VALUES
-(1, 'Волгоград-1'),
-(2, 'Москва Павелецкая'),
-(5, 'Казань');
 
 -- --------------------------------------------------------
 
@@ -107,14 +86,6 @@ CREATE TABLE `Trains` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Дамп данных таблицы `Trains`
---
-
-INSERT INTO `Trains` (`id`, `number`, `company`) VALUES
-(1, '001А', 'ФПК'),
-(2, '002Б', 'СПК');
-
---
 -- Индексы сохранённых таблиц
 --
 
@@ -131,7 +102,8 @@ ALTER TABLE `Routes`
 -- Индексы таблицы `SoldTickets`
 --
 ALTER TABLE `SoldTickets`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `routeId` (`routeId`);
 
 --
 -- Индексы таблицы `Stations`
@@ -160,7 +132,7 @@ ALTER TABLE `Trains`
 -- AUTO_INCREMENT для таблицы `Routes`
 --
 ALTER TABLE `Routes`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `SoldTickets`
@@ -172,13 +144,13 @@ ALTER TABLE `SoldTickets`
 -- AUTO_INCREMENT для таблицы `Stations`
 --
 ALTER TABLE `Stations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `Trains`
 --
 ALTER TABLE `Trains`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -191,6 +163,12 @@ ALTER TABLE `Routes`
   ADD CONSTRAINT `Routes_ibfk_1` FOREIGN KEY (`trainId`) REFERENCES `Trains` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `Routes_ibfk_2` FOREIGN KEY (`departurePlace`) REFERENCES `Stations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `Routes_ibfk_3` FOREIGN KEY (`arrivalPlace`) REFERENCES `Stations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `SoldTickets`
+--
+ALTER TABLE `SoldTickets`
+  ADD CONSTRAINT `SoldTickets_ibfk_1` FOREIGN KEY (`routeId`) REFERENCES `Routes` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ограничения внешнего ключа таблицы `StationsRoutes`
