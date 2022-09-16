@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       date: "",
-      passengers: 1,
+      passengers: "1",
       fromCityId: "",
       toCityId: "",
     };
@@ -85,13 +85,15 @@ export default {
 </style>
 
 <style lang="scss">
-.fromCity input {
-  border-radius: 15px 0px 0px 15px !important;
-  width: 205px;
-}
+.parameters {
+  .fromCity input {
+    border-radius: 15px 0px 0px 15px !important;
+    width: 205px;
+  }
 
-.toCity input {
-  border-radius: 0 !important;
-  width: 205px;
+  .toCity input {
+    border-radius: 0 !important;
+    width: 205px;
+  }
 }
 </style>

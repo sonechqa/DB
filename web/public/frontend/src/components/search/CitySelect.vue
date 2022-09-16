@@ -90,6 +90,7 @@ export default {
   padding: 5px 0px;
   margin-top: 5px;
   border-radius: 0px 0px 15px 15px;
+  z-index: 1;
 }
 
 .city {

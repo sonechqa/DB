@@ -13,6 +13,12 @@ $fromCityId = $_GET["fromCityId"];
 
 $toCityId = $_GET["toCityId"];
 
+if ($passengers < 0) {
+    $emparray = array();
+    sendJSONResponse($emparray);
+    die();
+}
+
 $query = <<<SQL
     SELECT r.*,
         s1.name as 'fromStationName',
